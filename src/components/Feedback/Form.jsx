@@ -6,21 +6,19 @@ import RatingSelector from "./RatingSelector";
 function Form({ newItem }) {
     const [text, setText] = useState("");
     const [rating, setRating] = useState(10);
-    const [alert, setAlert] = useState(
-        `Text must be at least more 10 characters`
-    );
+    const [alert, setAlert] = useState("");
     const [btnDisabled, setBtnDisabled] = useState(true);
 
     const handleTextChange = (e) => {
         const { value } = e.target;
         setText(value);
 
-        if (text === "") {
+        if (value === "") {
             setBtnDisabled(true);
-        } else if (text !== "" && text.trim().length < 10) {
+        } else if (value !== "" && value.trim().length <= 9) {
             setBtnDisabled(true);
             setAlert(`Text must be at least more 10 characters`);
-        } else if (text.trim().length > 10) {
+        } else if (value.trim().length > 10) {
             setBtnDisabled(false);
             setAlert(null);
         } else {
@@ -30,7 +28,12 @@ function Form({ newItem }) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        newItem(text, rating);
+        if (text.trim().length > 10) {
+            setAlert("");
+            newItem(text, rating);
+        } else {
+            setAlert(`Text must be at least more 10 characters`);
+        }
     };
 
     return (
