@@ -3,7 +3,7 @@ import Button from "../Button";
 import Card from "../Card";
 import RatingSelector from "./RatingSelector";
 
-function Form() {
+function Form({ newItem }) {
     const [text, setText] = useState("");
     const [rating, setRating] = useState(10);
     const [alert, setAlert] = useState(
@@ -27,17 +27,19 @@ function Form() {
             setBtnDisabled(true);
         }
     };
-    const handleRatingChange = (e) => {
-        setRating(e);
-        console.log(rating);
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        newItem(text, rating);
     };
+
     return (
         <>
             <Card>
-                <form onSubmit={(e) => e.preventDefault()}>
+                <form onSubmit={handleSubmit}>
                     <h2>How'd you rate your service with us?</h2>
                     <RatingSelector
-                        updateRating={(value) => handleRatingChange(value)}
+                        updateRating={(value) => setRating(value)}
                     />
                     <div className="input-group">
                         <input
