@@ -10,8 +10,8 @@ function List({ feedback, handleDelete }) {
                     {feedback.map((item) => (
                         <motion.div
                             key={item.id}
+                            transition={{ duration: 0.35 }}
                             initial={{
-                                transition: "all .2s",
                                 opacity: 0,
                                 translateY: "-75px",
                             }}
