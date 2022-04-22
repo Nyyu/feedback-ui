@@ -17,6 +17,15 @@ ul {
     list-style: none;
 }
 
+.Link {
+    text-decoration: none;
+}
+
+.Link:link,
+.Link:visited {
+    color: WHITE;
+}
+
 .container {
     max-width: 768px;
     margin: auto;

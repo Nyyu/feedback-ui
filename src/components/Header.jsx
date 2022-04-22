@@ -1,11 +1,23 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import PropType from "prop-types";
 
 function Header({ text, bgColor, txtColor }) {
     return (
-        <header style={{ backgroundColor: bgColor, color: txtColor }}>
+        <header style={{ backgroundColor: bgColor }}>
             <div className="container">
-                <h2>{text}</h2>
+                <Link
+                    className="Link"
+                    style={{
+                        // More specific cus link/visited properties
+                        color: txtColor,
+                    }}
+                    to={{
+                        pathname: "/",
+                    }}
+                >
+                    <h2>{text}</h2>
+                </Link>
             </div>
         </header>
     );

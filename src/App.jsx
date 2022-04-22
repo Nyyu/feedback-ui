@@ -1,13 +1,13 @@
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-
 import Header from "./components/Header";
 import List from "./components/Feedback/List";
 import Data from "./data/feedbackData";
 import Stats from "./components/Feedback/Stats";
 import Form from "./components/Feedback/Form";
 import About from "./components/Pages/About/About";
+import AboutLink from "./components/Pages/About/AboutLink";
 import { v4 as uuid } from "uuid";
 
 function App() {
@@ -39,6 +39,7 @@ function App() {
                                     feedback={data}
                                     handleDelete={handleDelete}
                                 />
+                                <AboutLink />
                             </>
                         }
                     />
