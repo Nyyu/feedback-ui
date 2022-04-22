@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/Header";
@@ -6,6 +7,7 @@ import List from "./components/Feedback/List";
 import Data from "./data/feedbackData";
 import Stats from "./components/Feedback/Stats";
 import Form from "./components/Feedback/Form";
+import About from "./components/Pages/About/About";
 import { v4 as uuid } from "uuid";
 
 function App() {
@@ -22,14 +24,28 @@ function App() {
         });
     }
     return (
-        <>
+        <Router>
             <Header />
             <div className="container">
-                <Form handleAdd={(obj) => addFeedback(obj)} />
-                <Stats feedback={data} />
-                <List feedback={data} handleDelete={handleDelete} />
+                <Routes>
+                    <Route
+                        exact
+                        path="/"
+                        element={
+                            <>
+                                <Form handleAdd={(obj) => addFeedback(obj)} />
+                                <Stats feedback={data} />
+                                <List
+                                    feedback={data}
+                                    handleDelete={handleDelete}
+                                />
+                            </>
+                        }
+                    />
+                    <Route path="/about" element={<About />} />
+                </Routes>
             </div>
-        </>
+        </Router>
     );
 }
 
