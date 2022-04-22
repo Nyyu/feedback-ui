@@ -3,7 +3,7 @@ import Button from "../Button";
 import Card from "../Card";
 import RatingSelector from "./RatingSelector";
 
-function Form({ newItem }) {
+function Form({ handleAdd }) {
     const [text, setText] = useState("");
     const [rating, setRating] = useState(10);
     const [alert, setAlert] = useState("");
@@ -30,7 +30,10 @@ function Form({ newItem }) {
         e.preventDefault();
         if (text.trim().length > 10) {
             setAlert("");
-            newItem(text, rating);
+            handleAdd({
+                text,
+                rating,
+            });
         } else {
             setAlert(`Text must be at least more 10 characters`);
         }
