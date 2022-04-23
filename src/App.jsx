@@ -9,6 +9,7 @@ import Form from "./components/Feedback/Form";
 import About from "./components/Pages/About/About";
 import AboutLink from "./components/Pages/About/AboutLink";
 import { v4 as uuid } from "uuid";
+import Item from "./components/Pages/Item/Item";
 
 function App() {
     const [data, setData] = useState(Data);
@@ -44,6 +45,7 @@ function App() {
                         }
                     />
                     <Route path="/about" element={<About />} />
+                    <Route path="/item/:id/:specific/*" element={<Item />} />
                 </Routes>
             </div>
         </Router>
