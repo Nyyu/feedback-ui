@@ -1,5 +1,3 @@
-// https://ny-feedback-api.netlify.app
-
 # Feedback Api
 
 A simple feedback application using React
